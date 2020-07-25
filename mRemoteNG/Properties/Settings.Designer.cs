@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace mRemoteNG {
+namespace mRemoteNG.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -1088,30 +1088,6 @@ namespace mRemoteNG {
             }
             set {
                 this["InhDefaultPanel"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("EncrBasic")]
-        public string ConDefaultICAEncryptionStrength {
-            get {
-                return ((string)(this["ConDefaultICAEncryptionStrength"]));
-            }
-            set {
-                this["ConDefaultICAEncryptionStrength"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool InhDefaultICAEncryptionStrength {
-            get {
-                return ((bool)(this["InhDefaultICAEncryptionStrength"]));
-            }
-            set {
-                this["InhDefaultICAEncryptionStrength"] = value;
             }
         }
         
@@ -3032,6 +3008,18 @@ namespace mRemoteNG {
             }
             set {
                 this["ConDefaultUseEnhancedMode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool InhDefaultUseEnhancedMode {
+            get {
+                return ((bool)(this["InhDefaultUseEnhancedMode"]));
+            }
+            set {
+                this["InhDefaultUseEnhancedMode"] = value;
             }
         }
         

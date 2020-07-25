@@ -2,6 +2,7 @@
 using mRemoteNG.Connection;
 using mRemoteNG.Container;
 using mRemoteNG.Tree;
+using mRemoteNG.Tree.ClickHandlers;
 using mRemoteNG.UI.Controls;
 using NUnit.Framework;
 

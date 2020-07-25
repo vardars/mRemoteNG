@@ -1,4 +1,5 @@
-﻿using mRemoteNG.UI.Controls;
+﻿using mRemoteNG.UI;
+using mRemoteNG.UI.Controls;
 using NUnit.Framework;
 
 namespace mRemoteNGTests.UI.Controls

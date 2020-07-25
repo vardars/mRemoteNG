@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
+using mRemoteNG.Resources.Language;
 using mRemoteNG.Tools;
 
 namespace mRemoteNG.Connection
@@ -124,12 +125,6 @@ namespace mRemoteNG.Connection
          LocalizedAttributes.LocalizedDescriptionInherit(nameof(Language.PropertyDescriptionSshOptions)),
          TypeConverter(typeof(MiscTools.YesNoTypeConverter))]
         public bool SSHOptions { get; set; }
-
-        [LocalizedAttributes.LocalizedCategory(nameof(Language.Protocol), 4),
-         LocalizedAttributes.LocalizedDisplayNameInherit(nameof(Language.EncryptionStrength)),
-         LocalizedAttributes.LocalizedDescriptionInherit(nameof(Language.PropertyDescriptionEncryptionStrength)),
-         TypeConverter(typeof(MiscTools.YesNoTypeConverter))]
-        public bool ICAEncryptionStrength { get; set; }
 
         [LocalizedAttributes.LocalizedCategory(nameof(Language.Protocol), 4),
          LocalizedAttributes.LocalizedDisplayNameInherit(nameof(Language.AuthenticationLevel)),

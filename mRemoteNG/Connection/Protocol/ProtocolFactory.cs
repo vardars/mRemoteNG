@@ -1,5 +1,4 @@
 ﻿using mRemoteNG.Connection.Protocol.Http;
-using mRemoteNG.Connection.Protocol.ICA;
 using mRemoteNG.Connection.Protocol.RAW;
 using mRemoteNG.Connection.Protocol.RDP;
 using mRemoteNG.Connection.Protocol.Rlogin;
@@ -8,6 +7,8 @@ using mRemoteNG.Connection.Protocol.Telnet;
 using mRemoteNG.Connection.Protocol.VNC;
 using System;
 using mRemoteNG.Connection.Protocol.PowerShell;
+using mRemoteNG.Properties;
+using mRemoteNG.Resources.Language;
 
 namespace mRemoteNG.Connection.Protocol
 {
@@ -40,10 +41,6 @@ namespace mRemoteNG.Connection.Protocol
                     return new ProtocolHTTP(connectionInfo.RenderingEngine);
                 case ProtocolType.HTTPS:
                     return new ProtocolHTTPS(connectionInfo.RenderingEngine);
-                case ProtocolType.ICA:
-                    var icaProtocol = new IcaProtocol();
-                    icaProtocol.tmrReconnect.Elapsed += icaProtocol.tmrReconnect_Elapsed;
-                    return icaProtocol;
                 case ProtocolType.PowerShell:
                     return new ProtocolPowerShell(connectionInfo);
                 case ProtocolType.IntApp:

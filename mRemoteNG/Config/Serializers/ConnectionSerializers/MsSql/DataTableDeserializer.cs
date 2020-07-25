@@ -1,22 +1,21 @@
-﻿using mRemoteNG.App;
-using mRemoteNG.Connection;
-using mRemoteNG.Connection.Protocol;
-using mRemoteNG.Connection.Protocol.Http;
-using mRemoteNG.Connection.Protocol.ICA;
-using mRemoteNG.Connection.Protocol.RDP;
-using mRemoteNG.Connection.Protocol.VNC;
-using mRemoteNG.Container;
-using mRemoteNG.Tree;
-using mRemoteNG.Tree.Root;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Security;
+using mRemoteNG.App;
+using mRemoteNG.Connection;
+using mRemoteNG.Connection.Protocol;
+using mRemoteNG.Connection.Protocol.Http;
+using mRemoteNG.Connection.Protocol.RDP;
+using mRemoteNG.Connection.Protocol.VNC;
+using mRemoteNG.Container;
 using mRemoteNG.Security;
 using mRemoteNG.Tools;
+using mRemoteNG.Tree;
+using mRemoteNG.Tree.Root;
 
-namespace mRemoteNG.Config.Serializers.MsSql
+namespace mRemoteNG.Config.Serializers.ConnectionSerializers.MsSql
 {
     public class DataTableDeserializer : IDeserializer<DataTable, ConnectionTreeModel>
     {
@@ -85,7 +84,7 @@ namespace mRemoteNG.Config.Serializers.MsSql
             connectionInfo.Icon = (string)dataRow["Icon"];
             connectionInfo.Panel = (string)dataRow["Panel"];
             connectionInfo.Username = (string)dataRow["Username"];
-            connectionInfo.Domain = (string)dataRow["DomainName"];
+            connectionInfo.Domain = (string)dataRow["Domain"];
             connectionInfo.Password = DecryptValue((string)dataRow["Password"]);
             connectionInfo.Hostname = (string)dataRow["Hostname"];
             connectionInfo.VmId = (string)dataRow["VmId"];
@@ -100,9 +99,6 @@ namespace mRemoteNG.Config.Serializers.MsSql
             connectionInfo.UseVmId = (bool)dataRow["UseVmId"];
             connectionInfo.RenderingEngine = (HTTPBase.RenderingEngine)Enum.Parse(typeof(HTTPBase.RenderingEngine),
                                                                                   (string)dataRow["RenderingEngine"]);
-            connectionInfo.ICAEncryptionStrength =
-                (IcaProtocol.EncryptionStrength)Enum.Parse(typeof(IcaProtocol.EncryptionStrength),
-                                                           (string)dataRow["ICAEncryptionStrength"]);
             connectionInfo.RDPAuthenticationLevel =
                 (AuthenticationLevel)Enum.Parse(typeof(AuthenticationLevel),
                                                             (string)dataRow["RDPAuthenticationLevel"]);
@@ -212,7 +208,6 @@ namespace mRemoteNG.Config.Serializers.MsSql
             connectionInfo.Inheritance.VmId = (bool)dataRow["InheritVmId"];
             connectionInfo.Inheritance.RenderingEngine = (bool)dataRow["InheritRenderingEngine"];
             connectionInfo.Inheritance.Username = (bool)dataRow["InheritUsername"];
-            connectionInfo.Inheritance.ICAEncryptionStrength = (bool)dataRow["InheritICAEncryptionStrength"];
             connectionInfo.Inheritance.RDPAuthenticationLevel = (bool)dataRow["InheritRDPAuthenticationLevel"];
             connectionInfo.Inheritance.RDPAlertIdleTimeout = (bool)dataRow["InheritRDPAlertIdleTimeout"];
             connectionInfo.Inheritance.RDPMinutesToIdleTimeout = (bool)dataRow["InheritRDPMinutesToIdleTimeout"];

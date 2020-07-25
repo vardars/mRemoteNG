@@ -1,9 +1,12 @@
-﻿using mRemoteNG.App.Info;
+﻿using System.Diagnostics;
+using System.Windows.Forms;
+using mRemoteNG.App.Info;
+using mRemoteNG.Resources.Language;
 using mRemoteNG.Themes;
 using System.Windows.Forms;
 using System.Diagnostics;
 
-namespace mRemoteNG.UI.Window
+namespace mRemoteNG.UI.Forms
 {
     public partial class FrmAbout : Form
     {
@@ -38,6 +41,14 @@ namespace mRemoteNG.UI.Window
             if (!ThemeManager.getInstance().ActiveAndExtended) return;
             pnlBottom.BackColor = ThemeManager.getInstance().ActiveTheme.ExtendedPalette.getColor("Dialog_Background");
             pnlBottom.ForeColor = ThemeManager.getInstance().ActiveTheme.ExtendedPalette.getColor("Dialog_Foreground");
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+
+            e.Cancel = true;
+            Hide();
         }
 
         private void llLicense_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

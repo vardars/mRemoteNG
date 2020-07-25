@@ -1,16 +1,16 @@
-﻿using mRemoteNG.Connection;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Security;
+using mRemoteNG.Connection;
 using mRemoteNG.Container;
 using mRemoteNG.Security;
 using mRemoteNG.Tools;
 using mRemoteNG.Tree;
 using mRemoteNG.Tree.Root;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Security;
 
-namespace mRemoteNG.Config.Serializers.MsSql
+namespace mRemoteNG.Config.Serializers.ConnectionSerializers.MsSql
 {
     public class DataTableSerializer : ISerializer<ConnectionInfo, DataTable>
     {
@@ -106,7 +106,7 @@ namespace mRemoteNG.Config.Serializers.MsSql
             dataTable.Columns.Add("Icon", typeof(string));
             dataTable.Columns.Add("Panel", typeof(string));
             dataTable.Columns.Add("Username", typeof(string));
-            dataTable.Columns.Add("DomainName", typeof(string));
+            dataTable.Columns.Add("Domain", typeof(string));
             dataTable.Columns.Add("Password", typeof(string));
             dataTable.Columns.Add("Hostname", typeof(string));
             dataTable.Columns.Add("Port", typeof(int));
@@ -117,7 +117,6 @@ namespace mRemoteNG.Config.Serializers.MsSql
             dataTable.Columns.Add("ConnectToConsole", typeof(bool));
             dataTable.Columns.Add("UseCredSsp", typeof(bool));
             dataTable.Columns.Add("RenderingEngine", typeof(string));
-            dataTable.Columns.Add("ICAEncryptionStrength", typeof(string));
             dataTable.Columns.Add("RDPAuthenticationLevel", typeof(string));
             dataTable.Columns.Add("Colors", typeof(string));
             dataTable.Columns.Add("Resolution", typeof(string));
@@ -193,7 +192,6 @@ namespace mRemoteNG.Config.Serializers.MsSql
             dataTable.Columns.Add("InheritUseConsoleSession", typeof(bool));
             dataTable.Columns.Add("InheritUseCredSsp", typeof(bool));
             dataTable.Columns.Add("InheritRenderingEngine", typeof(bool));
-            dataTable.Columns.Add("InheritICAEncryptionStrength", typeof(bool));
             dataTable.Columns.Add("InheritRDPAuthenticationLevel", typeof(bool));
             dataTable.Columns.Add("InheritUsername", typeof(bool));
             dataTable.Columns.Add("InheritPreExtApp", typeof(bool));
@@ -266,7 +264,7 @@ namespace mRemoteNG.Config.Serializers.MsSql
             dataRow["Icon"].Equals(connectionInfo.Icon) &&
             dataRow["Panel"].Equals(connectionInfo.Panel) &&
             dataRow["Username"].Equals(_saveFilter.SaveUsername ? connectionInfo.Username : "") &&
-            dataRow["DomainName"].Equals(_saveFilter.SaveDomain ? connectionInfo.Domain : "");
+            dataRow["Domain"].Equals(_saveFilter.SaveDomain ? connectionInfo.Domain : "");
 
             isFieldNotChange = isFieldNotChange && dataRow["Hostname"].Equals(connectionInfo.Hostname);
              isFieldNotChange = isFieldNotChange && dataRow["VmId"].Equals(connectionInfo.VmId);
@@ -284,8 +282,6 @@ namespace mRemoteNG.Config.Serializers.MsSql
             dataRow["UseEnhancedMode"].Equals(connectionInfo.UseEnhancedMode);
             isFieldNotChange = isFieldNotChange &&
             dataRow["RenderingEngine"].Equals(connectionInfo.RenderingEngine.ToString());
-            isFieldNotChange = isFieldNotChange &&
-            dataRow["ICAEncryptionStrength"].Equals(connectionInfo.ICAEncryptionStrength.ToString());
             isFieldNotChange = isFieldNotChange &&
             dataRow["RDPAuthenticationLevel"].Equals(connectionInfo.RDPAuthenticationLevel.ToString());
             isFieldNotChange = isFieldNotChange &&
@@ -384,7 +380,6 @@ namespace mRemoteNG.Config.Serializers.MsSql
                 dataRow["InheritVmId"].Equals(connectionInfo.Inheritance.VmId) &&
                 dataRow["InheritUseVmId"].Equals(connectionInfo.Inheritance.UseVmId) &&
                 dataRow["InheritUseEnhancedMode"].Equals(connectionInfo.Inheritance.UseEnhancedMode) &&
-                dataRow["InheritICAEncryptionStrength"].Equals(connectionInfo.Inheritance.ICAEncryptionStrength) &&
                 dataRow["InheritRDPAuthenticationLevel"].Equals(connectionInfo.Inheritance.RDPAuthenticationLevel) &&
                 dataRow["InheritRDPMinutesToIdleTimeout"].Equals(connectionInfo.Inheritance.RDPMinutesToIdleTimeout) &&
                 dataRow["InheritRDPAlertIdleTimeout"].Equals(connectionInfo.Inheritance.RDPAlertIdleTimeout) &&
@@ -448,7 +443,6 @@ namespace mRemoteNG.Config.Serializers.MsSql
                 dataRow["InheritUseCredSsp"].Equals(false) &&
                 dataRow["InheritRenderingEngine"].Equals(false) &&
                 dataRow["InheritUsername"].Equals(false) &&
-                dataRow["InheritICAEncryptionStrength"].Equals(false) &&
                 dataRow["InheritRDPAuthenticationLevel"].Equals(false) &&
                 dataRow["InheritRDPMinutesToIdleTimeout"].Equals(false) &&
                 dataRow["InheritRDPAlertIdleTimeout"].Equals(false) &&
@@ -514,7 +508,7 @@ namespace mRemoteNG.Config.Serializers.MsSql
             dataRow["Icon"] = connectionInfo.Icon;
             dataRow["Panel"] = connectionInfo.Panel;
             dataRow["Username"] = _saveFilter.SaveUsername ? connectionInfo.Username : "";
-            dataRow["DomainName"] = _saveFilter.SaveDomain ? connectionInfo.Domain : "";
+            dataRow["Domain"] = _saveFilter.SaveDomain ? connectionInfo.Domain : "";
             dataRow["Password"] = _saveFilter.SavePassword
                 ? _cryptographyProvider.Encrypt(connectionInfo.Password, _encryptionKey)
                 : "";
@@ -530,7 +524,6 @@ namespace mRemoteNG.Config.Serializers.MsSql
             dataRow["UseVmId"] = connectionInfo.UseVmId;
             dataRow["UseEnhancedMode"] = connectionInfo.UseEnhancedMode;
             dataRow["RenderingEngine"] = connectionInfo.RenderingEngine;
-            dataRow["ICAEncryptionStrength"] = connectionInfo.ICAEncryptionStrength;
             dataRow["RDPAuthenticationLevel"] = connectionInfo.RDPAuthenticationLevel;
             dataRow["RDPMinutesToIdleTimeout"] = connectionInfo.RDPMinutesToIdleTimeout;
             dataRow["RDPAlertIdleTimeout"] = connectionInfo.RDPAlertIdleTimeout;
@@ -623,7 +616,6 @@ namespace mRemoteNG.Config.Serializers.MsSql
                 dataRow["InheritVmId"] = connectionInfo.Inheritance.VmId;
                 dataRow["InheritUseVmId"] = connectionInfo.Inheritance.UseVmId;
                 dataRow["InheritUseEnhancedMode"] = connectionInfo.Inheritance.UseEnhancedMode;
-                dataRow["InheritICAEncryptionStrength"] = connectionInfo.Inheritance.ICAEncryptionStrength;
                 dataRow["InheritRDPAuthenticationLevel"] = connectionInfo.Inheritance.RDPAuthenticationLevel;
                 dataRow["InheritRDPMinutesToIdleTimeout"] = connectionInfo.Inheritance.RDPMinutesToIdleTimeout;
                 dataRow["InheritRDPAlertIdleTimeout"] = connectionInfo.Inheritance.RDPAlertIdleTimeout;
@@ -689,7 +681,6 @@ namespace mRemoteNG.Config.Serializers.MsSql
                 dataRow["InheritUseCredSsp"] = false;
                 dataRow["InheritRenderingEngine"] = false;
                 dataRow["InheritUsername"] = false;
-                dataRow["InheritICAEncryptionStrength"] = false;
                 dataRow["InheritRDPAuthenticationLevel"] = false;
                 dataRow["InheritRDPMinutesToIdleTimeout"] = false;
                 dataRow["InheritRDPAlertIdleTimeout"] = false;

@@ -4,11 +4,12 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Threading;
-using AxWFICALib;
 using mRemoteNG.App;
 using mRemoteNG.App.Info;
 using mRemoteNG.Connection.Protocol.RDP;
 using mRemoteNG.Messages;
+using mRemoteNG.Properties;
+using mRemoteNG.Resources.Language;
 using mRemoteNG.Themes;
 
 namespace mRemoteNG.UI.Forms.OptionsPages
@@ -18,7 +19,7 @@ namespace mRemoteNG.UI.Forms.OptionsPages
         public ComponentsPage()
         {
             ApplyTheme();
-            PageIcon = Resources.ComponentsCheck_Icon;
+            PageIcon = Properties.Resources.ComponentsCheck_Icon;
             InitializeComponent();
             FontOverrider.FontOverride(this);
             ThemeManager.getInstance().ThemeChanged += ApplyTheme;
@@ -46,7 +47,6 @@ namespace mRemoteNG.UI.Forms.OptionsPages
             CheckRdp();
             CheckVnc();
             CheckPutty();
-            CheckIca();
             Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg, "Finished component check", true);
         }
 
@@ -60,7 +60,7 @@ namespace mRemoteNG.UI.Forms.OptionsPages
 
             if (supportedVersions.Any())
             {
-                pbCheck1.Image = Resources.Good_Symbol;
+                pbCheck1.Image = Properties.Resources.Good_Symbol;
                 lblCheck1.ForeColor = Color.DarkOliveGreen;
                 lblCheck1.Text = "RDP (Remote Desktop) " + Language.CheckSucceeded;
                 txtCheck1.Text = string.Format(Language.CcRDPOK, string.Join(", ", supportedVersions));
@@ -68,7 +68,7 @@ namespace mRemoteNG.UI.Forms.OptionsPages
             }
             else
             {
-                pbCheck1.Image = Resources.Bad_Symbol;
+                pbCheck1.Image = Properties.Resources.Bad_Symbol;
                 lblCheck1.ForeColor = Color.Firebrick;
                 lblCheck1.Text = "RDP (Remote Desktop) " + Language.CheckFailed;
                 txtCheck1.Text = string.Format(Language.CcRDPFailed, GeneralAppInfo.UrlForum);
@@ -94,7 +94,7 @@ namespace mRemoteNG.UI.Forms.OptionsPages
                         System.Windows.Forms.Application.DoEvents();
                     }
 
-                    pbCheck2.Image = Resources.Good_Symbol;
+                    pbCheck2.Image = Properties.Resources.Good_Symbol;
                     lblCheck2.ForeColor = Color.DarkOliveGreen;
                     lblCheck2.Text = "VNC (Virtual Network Computing) " + Language.CheckSucceeded;
                     txtCheck2.Text = string.Format(Language.CcVNCOK, vnc.ProductVersion);
@@ -103,7 +103,7 @@ namespace mRemoteNG.UI.Forms.OptionsPages
             }
             catch (Exception)
             {
-                pbCheck2.Image = Resources.Bad_Symbol;
+                pbCheck2.Image = Properties.Resources.Bad_Symbol;
                 lblCheck2.ForeColor = Color.Firebrick;
                 lblCheck2.Text = "VNC (Virtual Network Computing) " + Language.CheckFailed;
                 txtCheck2.Text = string.Format(Language.CcVNCFailed, GeneralAppInfo.UrlForum);
@@ -130,7 +130,7 @@ namespace mRemoteNG.UI.Forms.OptionsPages
             {
                 var versionInfo = FileVersionInfo.GetVersionInfo(pPath);
 
-                pbCheck3.Image = Resources.Good_Symbol;
+                pbCheck3.Image = Properties.Resources.Good_Symbol;
                 lblCheck3.ForeColor = Color.DarkOliveGreen;
                 lblCheck3.Text = "PuTTY (SSH/Telnet/Rlogin/RAW) " + Language.CheckSucceeded;
                 txtCheck3.Text =
@@ -139,7 +139,7 @@ namespace mRemoteNG.UI.Forms.OptionsPages
             }
             else
             {
-                pbCheck3.Image = Resources.Bad_Symbol;
+                pbCheck3.Image = Properties.Resources.Bad_Symbol;
                 lblCheck3.ForeColor = Color.Firebrick;
                 lblCheck3.Text = "PuTTY (SSH/Telnet/Rlogin/RAW) " + Language.CheckFailed;
                 txtCheck3.Text = Language.CcPuttyFailed;
@@ -151,34 +151,6 @@ namespace mRemoteNG.UI.Forms.OptionsPages
             }
         }
 
-        private void CheckIca()
-        {
-            pnlCheck4.Visible = true;
-
-            try
-            {
-                using (var ica = new AxICAClient())
-                {
-                    ica.Parent = this;
-
-                    pbCheck4.Image = Resources.Good_Symbol;
-                    lblCheck4.ForeColor = Color.DarkOliveGreen;
-                    lblCheck4.Text = @"ICA (Citrix ICA) " + Language.CheckSucceeded;
-                    txtCheck4.Text = string.Format(Language.CcICAOK, ica.Version);
-                    Runtime.MessageCollector.AddMessage(MessageClass.InformationMsg, "ICA installed", true);
-                }
-            }
-            catch (Exception ex)
-            {
-                pbCheck4.Image = Resources.Bad_Symbol;
-                lblCheck4.ForeColor = Color.Firebrick;
-                lblCheck4.Text = @"ICA (Citrix ICA) " + Language.CheckFailed;
-                txtCheck4.Text = string.Format(Language.CcICAFailed, GeneralAppInfo.UrlForum);
-
-                Runtime.MessageCollector.AddMessage(MessageClass.WarningMsg,
-                                                    "ICA " + Language.CcNotInstalledProperly, true);
-                Runtime.MessageCollector.AddMessage(MessageClass.ErrorMsg, ex.Message, true);
-            }
-        }
+        
     }
 }
