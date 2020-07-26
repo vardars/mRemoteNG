@@ -41,7 +41,7 @@
       <Version>6.0.2</Version>
     </PackageReference>
     <PackageReference Include="Google.Protobuf">
-      <Version>3.12.1</Version>
+      <Version>3.12.3</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Newtonsoft.Json">
