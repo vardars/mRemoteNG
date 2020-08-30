@@ -92,6 +92,7 @@ namespace mRemoteNG.UI.Window
             mMenViewCollapseAllFolders.ToolTipText = Language.CollapseAllFolders;
             mMenSort.ToolTipText = Language.Sort;
             mMenFavorites.ToolTipText = Language.Favorites;
+            mMenToggleConfig.ToolTipText = Language.ToggleConfig;
 
             txtSearch.Text = Language.SearchPrompt;
         }
@@ -231,6 +232,13 @@ namespace mRemoteNG.UI.Window
 
                 mMenFavorites.DropDownItems.AddRange(favoritesList.ToArray());
                 mMenFavorites.ShowDropDown();
+            };
+            mMenToggleConfig.Click += (sender, args) =>
+            {
+                if (Windows.ConfigForm.Visible)
+                    Windows.ConfigForm.Hide();
+                else
+                    Windows.ConfigForm.Show();
             };
         }
 

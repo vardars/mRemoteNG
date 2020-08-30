@@ -1966,7 +1966,6 @@ mRemoteNG will now quit and begin with the installation.</value>
   </data>
   <data name="CredentialUnavailable" xml:space="preserve">
     <value>Credential not available</value>
-    
   </data>
   <data name="OptionsThemeDeleteConfirmation" xml:space="preserve">
     <value>Do you really want to delete the theme?</value>
@@ -2272,5 +2271,8 @@ Development Channel includes Alphas, Betas &amp; Release Candidates.</value>
   </data>
   <data name="ShowHideMenu" xml:space="preserve">
     <value>Show/Hide Menu Strip</value>
+  </data>
+  <data name="ToggleConfig" xml:space="preserve">
+    <value>Show/Hide Config</value>
   </data>
 </root>

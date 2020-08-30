@@ -5,17 +5,17 @@ using mRemoteNG.UI.Controls.ConnectionTree;
 namespace mRemoteNG.UI.Window
 {
     public partial class ConnectionTreeWindow : BaseWindow
-	{
+    {
         #region  Windows Form Designer generated code
-		internal System.Windows.Forms.MenuStrip msMain;
-		internal System.Windows.Forms.ToolStripMenuItem mMenViewExpandAllFolders;
-		internal System.Windows.Forms.ToolStripMenuItem mMenViewCollapseAllFolders;
-		internal System.Windows.Forms.ToolStripMenuItem mMenSort;
-		internal System.Windows.Forms.ToolStripMenuItem mMenAddConnection;
-		internal System.Windows.Forms.ToolStripMenuItem mMenAddFolder;
-		public System.Windows.Forms.TreeView tvConnections;
-		private void InitializeComponent()
-		{
+        internal System.Windows.Forms.MenuStrip msMain;
+        internal System.Windows.Forms.ToolStripMenuItem mMenViewExpandAllFolders;
+        internal System.Windows.Forms.ToolStripMenuItem mMenViewCollapseAllFolders;
+        internal System.Windows.Forms.ToolStripMenuItem mMenSort;
+        internal System.Windows.Forms.ToolStripMenuItem mMenAddConnection;
+        internal System.Windows.Forms.ToolStripMenuItem mMenAddFolder;
+        public System.Windows.Forms.TreeView tvConnections;
+        private void InitializeComponent()
+        {
             this.components = new System.ComponentModel.Container();
             mRemoteNG.Tree.ConnectionTreeModel connectionTreeModel2 = new mRemoteNG.Tree.ConnectionTreeModel();
             TreeNodeCompositeClickHandler treeNodeCompositeClickHandler3 = new TreeNodeCompositeClickHandler();
@@ -29,6 +29,7 @@ namespace mRemoteNG.UI.Window
             this.mMenViewCollapseAllFolders = new System.Windows.Forms.ToolStripMenuItem();
             this.mMenSort = new System.Windows.Forms.ToolStripMenuItem();
             this.mMenFavorites = new System.Windows.Forms.ToolStripMenuItem();
+            this.mMenToggleConfig = new System.Windows.Forms.ToolStripMenuItem();
             this.vsToolStripExtender = new WeifenLuo.WinFormsUI.Docking.VisualStudioToolStripExtender(this.components);
             this.pbSearch = new MrngPictureBox(this.components);
             this.txtSearch = new mRemoteNG.UI.Controls.MrngSearchBox();
@@ -77,12 +78,14 @@ namespace mRemoteNG.UI.Window
             // 
             this.msMain.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.msMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mMenAddConnection,
-            this.mMenAddFolder,
-            this.mMenViewExpandAllFolders,
-            this.mMenViewCollapseAllFolders,
-            this.mMenSort,
-            this.mMenFavorites});
+                this.mMenAddConnection,
+                this.mMenAddFolder,
+                this.mMenViewExpandAllFolders,
+                this.mMenViewCollapseAllFolders,
+                this.mMenSort,
+                this.mMenFavorites,
+                this.mMenToggleConfig
+            });
             this.msMain.Location = new System.Drawing.Point(0, 0);
             this.msMain.Name = "msMain";
             this.msMain.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
@@ -138,6 +141,14 @@ namespace mRemoteNG.UI.Window
             this.mMenFavorites.Name = "mMenFavorites";
             this.mMenFavorites.Size = new System.Drawing.Size(28, 20);
             this.mMenFavorites.Text = "Favorites";
+            // 
+            // mMenShowConfig
+            // 
+            this.mMenToggleConfig.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.mMenToggleConfig.Image = global::mRemoteNG.Properties.Resources.Config;
+            this.mMenToggleConfig.Name = "mMenToggleConfig";
+            this.mMenToggleConfig.Size = new System.Drawing.Size(28, 20);
+            this.mMenToggleConfig.Text = "Show Config";
             // 
             // vsToolStripExtender
             // 
@@ -211,7 +222,7 @@ namespace mRemoteNG.UI.Window
             this.ResumeLayout(false);
             this.PerformLayout();
 
-		}
+        }
         #endregion
 
         private System.ComponentModel.IContainer components;
@@ -220,5 +231,6 @@ namespace mRemoteNG.UI.Window
         internal Controls.MrngSearchBox txtSearch;
         public System.Windows.Forms.TableLayoutPanel searchBoxLayoutPanel;
         internal System.Windows.Forms.ToolStripMenuItem mMenFavorites;
+        internal System.Windows.Forms.ToolStripMenuItem mMenToggleConfig;
     }
 }

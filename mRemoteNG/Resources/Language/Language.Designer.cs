@@ -6022,6 +6022,15 @@ namespace mRemoteNG.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show/Hide Config.
+        /// </summary>
+        internal static string ToggleConfig {
+            get {
+                return ResourceManager.GetString("ToggleConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Track active connection in the connection tree.
         /// </summary>
         internal static string TrackActiveConnectionInConnectionTree {
