@@ -2273,4 +2273,7 @@ Development Channel includes Alphas, Betas &amp; Release Candidates.</value>
   <data name="ShowHideMenu" xml:space="preserve">
     <value>Show/Hide Menu Strip</value>
   </data>
+  <data name="FilterRemoteConnectionManager" xml:space="preserve">
+      <value>Remote Connection Manager files</value>
+  </data>
 </root>

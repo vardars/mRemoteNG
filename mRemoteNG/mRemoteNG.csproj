@@ -101,6 +101,7 @@
     <Compile Include="Config\DataProviders\InMemoryStringDataProvider.cs" />
     <Compile Include="Config\ILoader.cs" />
     <Compile Include="Config\Import\MRemoteNGCsvImporter.cs" />
+    <Compile Include="Config\Import\RemoteDesktopManagerImporter.cs" />
     <Compile Include="Config\ISaver.cs" />
     <Compile Include="Config\Serializers\ConnectionSerializers\Xml\XmlConnectionNodeSerializer27.cs" />
     <Compile Include="Config\Serializers\ConnectionSerializers\MsSql\LocalConnectionPropertiesModel.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="Config\Serializers\MiscSerializers\RemoteDesktopConnectionManagerDeserializer.cs" />
     <Compile Include="Config\Serializers\ConnectionSerializers\Xml\XmlConnectionNodeSerializer26.cs" />
     <Compile Include="Config\Serializers\ConnectionSerializers\MsSql\SqlDatabaseMetaDataRetriever.cs" />
+    <Compile Include="Config\Serializers\MiscSerializers\RemoteDesktopManagerDeserializer.cs" />
     <Compile Include="Config\Serializers\Versioning\IVersionUpgrader.cs" />
     <Compile Include="Config\Serializers\Versioning\SqlVersion22To23Upgrader.cs" />
     <Compile Include="Config\Serializers\Versioning\SqlVersion23To24Upgrader.cs" />

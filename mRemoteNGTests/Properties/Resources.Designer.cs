@@ -19,7 +19,7 @@ namespace mRemoteNGTests.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -378,6 +378,31 @@ namespace mRemoteNGTests.Properties {
         internal static string test_remotedesktopconnection_rdp {
             get {
                 return ResourceManager.GetString("test_remotedesktopconnection_rdp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; ?&gt;
+        ///&lt;ArrayOfConnection&gt;
+        ///    &lt;Connection&gt;
+        ///        &lt;ConnectionType&gt;Group&lt;/ConnectionType&gt;
+        ///        &lt;CredentialConnectionID&gt;&lt;/CredentialConnectionID&gt;
+        ///        &lt;Group&gt;Group1&lt;/Group&gt;
+        ///        &lt;ID&gt;&lt;/ID&gt;
+        ///        &lt;Name&gt;Group1&lt;/Name&gt;
+        ///        &lt;Stamp&gt;&lt;/Stamp&gt;
+        ///    &lt;/Connection&gt;
+        ///    &lt;Connection&gt;
+        ///        &lt;ConnectionType&gt;Group&lt;/ConnectionType&gt;
+        ///        &lt;CredentialConnectionID&gt;&lt;/CredentialConnectionID&gt;
+        ///        &lt;Group&gt;Group2&lt;/Group&gt;
+        ///        &lt;ID&gt;&lt;/ID&gt;
+        ///        &lt;Name&gt;Group2&lt;/Name&gt;
+        ///        &lt;Stamp&gt; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string test_remotedesktopmanager_rdm {
+            get {
+                return ResourceManager.GetString("test_remotedesktopmanager_rdm", resourceCulture);
             }
         }
         
