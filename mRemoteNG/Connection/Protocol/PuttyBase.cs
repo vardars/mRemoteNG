@@ -262,10 +262,12 @@ namespace mRemoteNG.Connection.Protocol
                     var scaledFrameBorderHeight = _display.ScaleHeight(SystemInformation.FrameBorderSize.Height);
                     var scaledFrameBorderWidth = _display.ScaleWidth(SystemInformation.FrameBorderSize.Width);
 
-                    NativeMethods.MoveWindow(PuttyHandle, -scaledFrameBorderWidth,
-                        -(SystemInformation.CaptionHeight + scaledFrameBorderHeight),
-                        InterfaceControl.Width + scaledFrameBorderWidth * 2,
-                        InterfaceControl.Height + SystemInformation.CaptionHeight + scaledFrameBorderHeight * 2, true);
+                    var x = -scaledFrameBorderWidth;
+                    var y = -(SystemInformation.CaptionHeight + scaledFrameBorderHeight);
+                    var cx = InterfaceControl.Width + scaledFrameBorderWidth * 2;
+                    var cy = InterfaceControl.Height + SystemInformation.CaptionHeight + scaledFrameBorderHeight * 2;
+
+                    NativeMethods.MoveWindow(PuttyHandle, x, y, cx, cy, true);
                 }
             }
             catch (Exception ex)
