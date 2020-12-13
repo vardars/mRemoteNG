@@ -20,10 +20,7 @@ namespace mRemoteNG.App
         internal static extern IntPtr CreatePopupMenu();
 
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
-        internal static extern IntPtr FindWindowEx(IntPtr parentHandle,
-                                                   IntPtr childAfter,
-                                                   string lclassName,
-                                                   string windowTitle);
+        internal static extern IntPtr FindWindowEx(IntPtr parentHandle, IntPtr childAfter, string lclassName, string windowTitle);
 
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
         internal static extern IntPtr GetForegroundWindow();
@@ -32,11 +29,7 @@ namespace mRemoteNG.App
         internal static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
 
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
-        internal static extern bool InsertMenu(IntPtr hMenu,
-                                               int uPosition,
-                                               int uFlags,
-                                               IntPtr uIDNewItem,
-                                               string lpNewItem);
+        internal static extern bool InsertMenu(IntPtr hMenu, int uPosition, int uFlags, IntPtr uIDNewItem, string lpNewItem);
 
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
         internal static extern int IsIconic(IntPtr hWnd);
@@ -63,10 +56,7 @@ namespace mRemoteNG.App
         internal static extern IntPtr SendMessage(IntPtr hWnd, uint msg, IntPtr wParam, string lParam);
 
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
-        internal static extern IntPtr SendMessage([In] IntPtr hWnd,
-                                                  [In] uint msg,
-                                                  [Out] StringBuilder wParam,
-                                                  [In] IntPtr lParam);
+        internal static extern IntPtr SendMessage([In] IntPtr hWnd, [In] uint msg, [Out] StringBuilder wParam, [In] IntPtr lParam);
 
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
         internal static extern IntPtr SetClipboardViewer(IntPtr hWndNewViewer);
@@ -75,17 +65,16 @@ namespace mRemoteNG.App
         internal static extern bool SetForegroundWindow(IntPtr hWnd);
 
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
-        internal static extern bool SetMenuItemBitmaps(IntPtr hMenu,
-                                                       int uPosition,
-                                                       int uFlags,
-                                                       IntPtr hBitmapUnchecked,
-                                                       IntPtr hBitmapChecked);
+        internal static extern bool SetMenuItemBitmaps(IntPtr hMenu, int uPosition, int uFlags, IntPtr hBitmapUnchecked, IntPtr hBitmapChecked);
 
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
         internal static extern long SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
 
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern uint GetWindowLong(IntPtr hWnd, int nIndex);
+
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
-        internal static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+        internal static extern int SetWindowLong(IntPtr hWnd, int nIndex, uint dwNewLong);
 
         [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
         internal static extern int ShowWindow(IntPtr hWnd, int nCmdShow);
@@ -104,6 +93,9 @@ namespace mRemoteNG.App
 
         [DllImport("user32", ExactSpelling = true, CharSet = CharSet.Ansi, SetLastError = true)]
         internal static extern bool SetWindowPlacement(IntPtr hWnd, ref WINDOWPLACEMENT lpwndpl);
+
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern IntPtr SetFocus(IntPtr hWnd);
 
         [DllImport("kernel32", SetLastError = true)]
         [ReliabilityContract(Consistency.WillNotCorruptState, Cer.MayFail)]
@@ -290,12 +282,12 @@ namespace mRemoteNG.App
         public const int SWP_NOSENDCHANGING = 0x400;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public const int SWP_NOCLIENTSIZE = 0x800;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public const int SWP_NOCLIENTMOVE = 0x1000;
 
@@ -310,7 +302,7 @@ namespace mRemoteNG.App
         public const int SWP_ASYNCWINDOWPOS = 0x4000;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public const int SWP_STATECHANGED = 0x8000;
 
@@ -327,12 +319,12 @@ namespace mRemoteNG.App
         #region WM_ACTIVATE
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public const int WA_INACTIVE = 0x0;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public const int WA_ACTIVE = 0x1;
 
@@ -364,7 +356,7 @@ namespace mRemoteNG.App
         public const int WM_ACTIVATE = 0x6;
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         public const int WM_SETTEXT = 0xC;
 
